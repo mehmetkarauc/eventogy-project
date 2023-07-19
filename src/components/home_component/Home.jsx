@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Home.css';
 
 function Home() {
   const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
@@ -14,10 +15,12 @@ function Home() {
     return (
       <>
         {authenticated === "true" &&
-        <div>
+        <div id='home'>
+            <div>
+              <button onClick={() => navigate('/home/account')}>Account</button>
+              <button onClick={logout}>Logout</button>
+            </div>
             <h1>Home</h1>
-            <button onClick={() => navigate('/home/account')}>Account</button>
-            <button onClick={logout}>Logout</button>
         </div>
         }
       </>

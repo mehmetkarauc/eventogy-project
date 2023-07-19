@@ -11,17 +11,17 @@
     bottom: 0;
     right: 0;
     width: 50%;
-    height: 50%;
+    height: 60%;
     margin: auto;
-}
-
-#login > h1 {
-    font-size: 30px;
-    margin: 40px;
 }
 
 #login > form {
     margin: 40px;    
+}
+
+#login > form > h1 {
+    font-size: 30px;
+    margin: 40px;
 }
 
 #login > form > label {

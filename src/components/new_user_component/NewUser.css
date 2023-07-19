@@ -1,5 +1,33 @@
 #register {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 15%;
+    height: 60%;
+    margin: auto;
+}
+
+#register > form {
+    margin: 40px;
+}
+
+#register > form > h1 {
     text-align: center;
-    width: 10%;
-    padding: 20px;
+    font-size: 30px;
+    margin: 40px;
+}
+
+#register > form > div {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#register > form > label > input {
+    margin: 10px 0;
+}
+
+#register > div {
+    text-align: center;
 }
