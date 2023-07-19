@@ -8,13 +8,11 @@ function Login() {
   const [loggingStatus, setLoggingStatus] = useState();
   const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
-  // localStorage.setItem("authenticated", false);
   
   function loginCheck(e) {
     e.preventDefault();
     setLoggingStatus();
 
-    
     const options = {
       method: 'POST',
       headers: {
@@ -30,7 +28,7 @@ function Login() {
         if (response.code === 200) {
           setAuthenticated(true);
           localStorage.setItem("authenticated", "true");
-          navigate('home');
+          navigate('/home');
         } else {
           setLoggingStatus('Wrong Credentials');
         }
@@ -39,22 +37,26 @@ function Login() {
   }
 
   return (
-    <div id='login'>
-      <form onSubmit={loginCheck}>
-        <h1> Login Page </h1>
-        <label>
-          Email: 
-          <input type='email' onChange={(e) => setEmailValue(e.target.value)} required></input>
-        </label>
-        <label>
-          Password:
-          <input type='password' onChange={(e) => setPasswordValue(e.target.value)} required></input>
-        </label>
-        <input type='submit' value='Submit'/>
-      </form>
-      <p>{loggingStatus}</p>
-      <button onClick={() => navigate('register')}>Register</button>
-    </div>
+    <>
+      {(!authenticated &&
+      <div id='login'>
+        <form onSubmit={loginCheck}>
+          <h1> Login Page </h1>
+          <label>
+            Email: 
+            <input type='email' onChange={(e) => setEmailValue(e.target.value)} required></input>
+          </label>
+          <label>
+            Password:
+            <input type='password' onChange={(e) => setPasswordValue(e.target.value)} required></input>
+          </label>
+          <input type='submit' value='Submit'/>
+        </form>
+        <p>{loggingStatus}</p>
+        <button onClick={() => navigate('/register')}>Register</button>
+      </div>
+      )}
+    </>
   )
 }
 
