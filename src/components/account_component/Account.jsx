@@ -36,7 +36,7 @@ function Account() {
                 </label>
             </div>
             <button onClick={changePassword}>Chnage Password</button>
-            { passwordStatus }
+            <p>{ passwordStatus }</p>
             <button onClick={() => navigate(-1)}>Back</button>
         </div>
     )
