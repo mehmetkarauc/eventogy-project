@@ -44,11 +44,11 @@ function Login() {
           <h1> Login Page </h1>
           <label>
             Email: 
-            <input type='email' onChange={(e) => setEmailValue(e.target.value)} required></input>
+            <input type='email' placeholder='Email' onChange={(e) => setEmailValue(e.target.value)} required></input>
           </label>
           <label>
             Password:
-            <input type='password' onChange={(e) => setPasswordValue(e.target.value)} required></input>
+            <input type='password' placeholder='Password' onChange={(e) => setPasswordValue(e.target.value)} required></input>
           </label>
           <input type='submit' value='Submit'/>
         </form>

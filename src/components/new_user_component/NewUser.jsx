@@ -52,20 +52,20 @@ function NewUser() {
                 <h1> Register Page </h1>
                 <label>
                 Email: 
-                <input type='email' onChange={(e) => setEmailValue(e.target.value)} required></input>
+                <input type='email' placeholder='Email' onChange={(e) => setEmailValue(e.target.value)} required></input>
                 </label>
                 <label>
                 Password:
-                <input type='password' onChange={(e) => setPasswordValue(e.target.value)} required></input>
+                <input type='password' placeholder='Password' onChange={(e) => setPasswordValue(e.target.value)} required></input>
                 </label>
                 <label>
                 Confirm Password:
-                <input type='password' onChange={(e) => setConfirmedPasswordValue(e.target.value)} required></input>
+                <input type='password' placeholder='Confirm Password' onChange={(e) => setConfirmedPasswordValue(e.target.value)} required></input>
                 </label>
-                <input type='submit' value='Submit'/>
+                <div><input type='submit' value='Submit'/></div>
             </form>
             <p>{accountStatus}</p>
-            <button onClick={() => navigate(-1)}>Back to login</button>
+            <div><button onClick={() => navigate(-1)}>Back to login</button></div>
         </div>
     )
 }

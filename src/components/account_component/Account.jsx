@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Account.css';
 
 function Account() {
+    const [email, setEmail] = useState();
     const [currentPassword, setCurrentPassword] = useState();
     const [newPassword, setNewPassword] = useState();
     const [newConfirmedPassword, setNewConfirmedPassword] = useState();
@@ -19,9 +21,13 @@ function Account() {
     }
 
     return (
-        <div>
+        <div id='account'>
             <h1>Account</h1>
             <div>
+            <label>
+                    Email:
+                    <input type='email' onChange={(e) => setEmail(e.target.value)}></input>
+                </label>
                 <label>
                     Current Password:
                     <input type='password' onChange={(e) => setCurrentPassword(e.target.value)}></input>
@@ -35,9 +41,9 @@ function Account() {
                     <input type='password' onChange={(e) => setNewConfirmedPassword(e.target.value)}></input>
                 </label>
             </div>
-            <button onClick={changePassword}>Chnage Password</button>
             <p>{ passwordStatus }</p>
-            <button onClick={() => navigate(-1)}>Back</button>
+            <div><button onClick={changePassword}>Change Password</button></div>
+            <div><button onClick={() => navigate(-1)}>Back</button></div>
         </div>
     )
 }
