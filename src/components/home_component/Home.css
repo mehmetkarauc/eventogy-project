@@ -5,8 +5,15 @@
 }
 
 #home > div {
-    text-align: right;
     margin: 10px;
+    display: flex;
+    height: 30px;
+    justify-content: end;
+}
+
+#home > div > p {
+    margin: 0;
+    padding: 2px 0;
 }
 
 #home > div > button:first-child{

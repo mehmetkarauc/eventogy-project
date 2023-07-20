@@ -9,7 +9,8 @@ function NewUser() {
     const [accountStatus, setAccountStatus] = useState();
     const navigate = useNavigate();
 
-    function createUser(e) {
+    // Function to handle new user creation
+    function handleUserCreation(e) {
         e.preventDefault();
         setAccountStatus();
 
@@ -48,8 +49,8 @@ function NewUser() {
 
     return (
         <div id='register'>
-            <form onSubmit={createUser}>
-                <h1> Register Page </h1>
+            <form onSubmit={handleUserCreation}>
+                <h1>Create an account</h1>
                 <label>
                 Email: 
                 <input type='email' placeholder='Email' onChange={(e) => setEmailValue(e.target.value)} required></input>

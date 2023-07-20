@@ -3,20 +3,28 @@ import { useNavigate } from 'react-router-dom';
 import './Account.css';
 
 function Account() {
-    const [email, setEmail] = useState();
+    const [currentEmail, setCurrentEmail] = useState();
     const [currentPassword, setCurrentPassword] = useState();
     const [newPassword, setNewPassword] = useState();
     const [newConfirmedPassword, setNewConfirmedPassword] = useState();
     const [passwordStatus, setPasswordStatus] = useState();
     const navigate = useNavigate();
 
-    function changePassword(e) {
+    // Function to handle password change process
+    function handleChangePassword(e) {
         e.preventDefault();
-        if (newPassword !== newConfirmedPassword) {
-            setPasswordStatus('Password does not match');
+
+        if (!currentEmail || !currentPassword || !newPassword || !newConfirmedPassword){
+            setPasswordStatus('Check all fields are filled');
+            return;
+        } else if (currentEmail !== JSON.parse(localStorage.getItem("currentUserEmail")) || currentPassword !== localStorage.getItem("currentUserPassword")) {
+            setPasswordStatus('Email or Password is not a match');
+            return;
+        } else if (newPassword !== newConfirmedPassword) {
+            setPasswordStatus('New passwords do not match');
             return;
         } else {
-            console.log("match");
+            setPasswordStatus('Password successfully changed');
         }
     }
 
@@ -26,7 +34,7 @@ function Account() {
             <div>
             <label>
                     Email:
-                    <input type='email' onChange={(e) => setEmail(e.target.value)}></input>
+                    <input type='email' onChange={(e) => setCurrentEmail(e.target.value)}></input>
                 </label>
                 <label>
                     Current Password:
@@ -42,7 +50,7 @@ function Account() {
                 </label>
             </div>
             <p>{ passwordStatus }</p>
-            <div><button onClick={changePassword}>Change Password</button></div>
+            <div><button onClick={handleChangePassword}>Change Password</button></div>
             <div><button onClick={() => navigate(-1)}>Back</button></div>
         </div>
     )
