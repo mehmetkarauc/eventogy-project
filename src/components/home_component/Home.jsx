@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
+import Login from '../login_component/Login';
 
 function Home() {
   const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
@@ -13,6 +14,13 @@ function Home() {
     setAuthenticated("false");
     navigate(-1);
   }
+
+  // Check if user is authenticated otherwise navigate back to login
+  useEffect(() => {
+    if (authenticated !== true) {
+      navigate('/');
+    }
+  }, [authenticated] );
 
     return (
       <>

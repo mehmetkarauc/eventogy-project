@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -8,7 +8,15 @@ function Login() {
   const [loggingStatus, setLoggingStatus] = useState();
   const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
-  
+
+  // Check if the user is already authenticated
+  useEffect(() => {
+    if (localStorage.getItem('authenticated') === 'true') {
+      setAuthenticated(true);
+      navigate('/home');
+    }
+  }, [navigate]);
+
   // Function to handle the login request
   function handleLogin(e) {
     e.preventDefault();
