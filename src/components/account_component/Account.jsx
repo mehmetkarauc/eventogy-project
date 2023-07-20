@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Account.css';
 
@@ -8,6 +8,7 @@ function Account() {
     const [newPassword, setNewPassword] = useState();
     const [newConfirmedPassword, setNewConfirmedPassword] = useState();
     const [passwordStatus, setPasswordStatus] = useState();
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
     const navigate = useNavigate();
 
     // Function to handle password change process
@@ -28,7 +29,16 @@ function Account() {
         }
     }
 
+    // Check if user is authenticated otherwise navigate back to login
+    useEffect(() => {
+        if (authenticated !== true) {
+          navigate('/');
+        }
+      }, [authenticated] );
+
     return (
+        <>
+        {authenticated === "true" &&
         <div id='account'>
             <h1>Account</h1>
             <div>
@@ -53,6 +63,8 @@ function Account() {
             <div><button onClick={handleChangePassword}>Change Password</button></div>
             <div><button onClick={() => navigate(-1)}>Back</button></div>
         </div>
+        }
+        </>
     )
 }
 
