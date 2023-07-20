@@ -9,7 +9,8 @@ function Login() {
   const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
   
-  function loginCheck(e) {
+  // Function to handle the login request
+  function handleLogin(e) {
     e.preventDefault();
     setLoggingStatus();
 
@@ -26,8 +27,10 @@ function Login() {
       .then(response => response.json())
       .then(response => { 
         if (response.code === 200) {
-          setAuthenticated(true);
+          localStorage.setItem("currentUserEmail", JSON.stringify(emailValue));
+          localStorage.setItem("currentUserPassword", passwordValue);
           localStorage.setItem("authenticated", "true");
+          setAuthenticated(true);
           navigate('/home');
         } else {
           setLoggingStatus('Wrong Credentials');
@@ -40,8 +43,8 @@ function Login() {
     <>
       {(!authenticated &&
       <div id='login'>
-        <form onSubmit={loginCheck}>
-          <h1> Login Page </h1>
+        <form onSubmit={handleLogin}>
+          <h1>Login Page</h1>
           <label>
             Email: 
             <input type='email' placeholder='Email' onChange={(e) => setEmailValue(e.target.value)} required></input>
