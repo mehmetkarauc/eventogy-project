@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import Login from '../login_component/Login';
 
 function Home() {
   const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
