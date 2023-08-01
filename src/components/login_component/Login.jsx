@@ -31,7 +31,8 @@ function Login() {
       body: new URLSearchParams({email: emailValue, password: passwordValue})
     };
     
-    fetch('https://laravel-api.albrecht.uk.com/api/users/login', options)
+    // fetch('https://laravel-api.albrecht.uk.com/api/users/login', options)
+    fetch('https://landlord.deventogy.com/api/users/login', options)
       .then(response => response.json())
       .then(response => { 
         if (response.code === 200) {

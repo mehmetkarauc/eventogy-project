@@ -35,7 +35,8 @@ function NewUser() {
             })
         };
           
-        fetch('https://laravel-api.albrecht.uk.com/api/users', options)
+        // fetch('https://laravel-api.albrecht.uk.com/api/users', options)
+        fetch('https://landlord.deventogy.com/api/users', options)
             .then(response => response.json())
             .then(response => {
                 if (response.code === 200) {
